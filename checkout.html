@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Checkout (Admin) - Goguma Roll</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div class="card">
+      <h1>Checkout - Ringkasan Pesanan</h1>
+      <p class="small">Pratinjau pesanan terbaru dan metode pembayaran.</p>
+
+      <ul
+        id="checkout-orders"
+        style="
+          text-align: left;
+          margin-top: 12px;
+          color: #6112bd;
+          background: #fff;
+          padding: 12px;
+          border-radius: 8px;
+        "
+      >
+        <!-- rendered by JS -->
+      </ul>
+
+      <div style="margin-top: 18px">
+        <a class="btn" href="dashboard.html">Kembali</a>
+        <button id="btn-logout" class="btn" style="margin-left: 12px">
+          Logout
+        </button>
+      </div>
+    </div>
+
+    <script src="assets/js/admin.js"></script>
+    <script>
+      initCheckoutAdminPage();
+    </script>
+  </body>
+</html>

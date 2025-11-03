@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Laporan Pesanan - Admin 3</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      body {
+        background: linear-gradient(135deg, #7e22ce, #9333ea, #a855f7);
+        font-family: "Poppins", sans-serif;
+        color: white;
+        text-align: center;
+        padding: 30px;
+      }
+      .table-box {
+        width: 90%;
+        max-width: 1000px;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(6px);
+        border-radius: 15px;
+        padding: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        color: black;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      th {
+        background: #ede9fe;
+        color: #7e22ce;
+        font-weight: bold;
+        padding: 10px;
+      }
+      td {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+      }
+      .btn-back {
+        background: white;
+        color: #7e22ce;
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: none;
+        margin-bottom: 20px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn-back" onclick="window.location.href='dashboard.html'">
+      ← Kembali
+    </button>
+    <h2>Laporan Pesanan 📄</h2>
+
+    <div class="table-box">
+      <table id="laporan-table">
+        <tr>
+          <th>Nama</th>
+          <th>No WA</th>
+          <th>Alamat</th>
+          <th>Produk</th>
+          <th>Total</th>
+          <th>Status</th>
+        </tr>
+      </table>
+    </div>
+
+    <script src="assets/js/produk.js"></script>
+    <script>
+      loadLaporan();
+    </script>
+  </body>
+</html>

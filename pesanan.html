@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Pesanan - Admin Goguma Roll</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div class="card">
+      <h1>Daftar Pesanan</h1>
+      <p class="small">Kelola status pesanan di sini.</p>
+
+      <table class="table" style="margin-top: 14px">
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>No WA</th>
+            <th>Alamat</th>
+            <th>Produk</th>
+            <th>Status</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="orders-body">
+          <!-- will be rendered by JS -->
+        </tbody>
+      </table>
+
+      <div style="margin-top: 18px">
+        <a class="btn" href="dashboard.html">Kembali ke Dashboard</a>
+        <button id="btn-logout" class="btn" style="margin-left: 12px">
+          Logout
+        </button>
+      </div>
+    </div>
+
+    <script src="assets/js/admin.js"></script>
+    <script>
+      initPesananPage();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Dashboard Admin - Goguma Roll</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div class="card">
+      <h1>Dashboard Admin</h1>
+      <p class="small">Selamat datang, <strong id="admin-name"></strong></p>
+
+      <div class="row">
+        <div class="info-card">
+          <h3>Total Produk</h3>
+          <p id="count-products">0</p>
+        </div>
+        <div class="info-card">
+          <h3>Total Pesanan</h3>
+          <p id="count-orders">0</p>
+        </div>
+        <div class="info-card">
+          <h3>Laporan Ringkas</h3>
+          <p id="count-reports">0</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 18px">
+        <a class="btn" href="pesanan.html">Pesanan</a>
+        <a class="btn" href="checkout.html" style="margin-left: 12px"
+          >Checkout</a
+        >
+        <a class="btn" href="produk.html" style="margin-left: 12px">Produk</a>
+        <button
+          id="btn-logout"
+          class="btn"
+          style="margin-left: 12px; background: #fff; color: #7e22ce"
+        >
+          Logout
+        </button>
+      </div>
+
+      <p class="footer">Dashboard admin — hanya tampil setelah login</p>
+    </div>
+
+    <script src="assets/js/admin.js"></script>
+    <script>
+      initDashboardPage();
+    </script>
+  </body>
+</html>

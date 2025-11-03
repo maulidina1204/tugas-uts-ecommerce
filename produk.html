@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Produk - Admin Goguma Roll</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div class="card">
+      <h1>Daftar Produk</h1>
+      <p class="small">
+        (Sistem PO — admin tidak menambah/hapus produk pada versi ini)
+      </p>
+
+      <div class="products-grid">
+        <div class="product">
+          <!-- optionally replace img src with your local image path -->
+          <img
+            src="assets/img/original.jpg"
+            alt="Original Roll"
+            onerror="this.style.display='none'"
+          />
+          <h4>Original Roll</h4>
+          <p class="small">Ubi ungu asli, manis lembut.</p>
+          <p style="font-weight: 700">Rp 10.000</p>
+        </div>
+
+        <div class="product">
+          <img
+            src="assets/img/choco.jpg"
+            alt="Choco Roll"
+            onerror="this.style.display='none'"
+          />
+          <h4>Choco Roll</h4>
+          <p class="small">Coklat premium, cocok buat yang doyan manis.</p>
+          <p style="font-weight: 700">Rp 12.000</p>
+        </div>
+
+        <div class="product">
+          <img
+            src="assets/img/cheese.jpg"
+            alt="Cheese Roll"
+            onerror="this.style.display='none'"
+          />
+          <h4>Cheese Roll</h4>
+          <p class="small">Isi keju yang lumer di mulut.</p>
+          <p style="font-weight: 700">Rp 13.000</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 18px">
+        <a class="btn" href="dashboard.html">Kembali</a>
+        <button id="btn-logout" class="btn" style="margin-left: 12px">
+          Logout
+        </button>
+      </div>
+    </div>
+
+    <script src="assets/js/admin.js"></script>
+    <script>
+      initProdukPage();
+    </script>
+  </body>
+</html>
