@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tentang Kami | Goguma Roll</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #a855f7, #9333ea, #7e22ce);
+        color: white;
+        text-align: center;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      header {
+        padding: 20px;
+        font-size: 2em;
+        font-weight: bold;
+        text-shadow: 0 0 20px #c084fc;
+      }
+
+      header img {
+        width: 100px;
+        border-radius: 50%;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        margin-bottom: 10px;
+      }
+
+      section {
+        flex: 1;
+        padding: 20px;
+      }
+
+      .tentang {
+        max-width: 800px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: 20px;
+        padding: 35px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+        line-height: 1.7;
+      }
+
+      .tentang h2 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+        color: #fff;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      }
+
+      .tentang p {
+        font-size: 1em;
+        color: #f8f8f8;
+        margin-bottom: 15px;
+      }
+
+      /* --- Area Gambar Produk --- */
+      .produk-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 25px;
+      }
+
+      .produk-container img {
+        width: 230px;
+        height: 230px;
+        object-fit: cover;
+        border-radius: 20px;
+        box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+        transition: transform 0.3s;
+      }
+
+      .produk-container img:hover {
+        transform: scale(1.05);
+      }
+
+      .btn-container {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+      }
+
+      .btn-container div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        background-color: white;
+        color: #6b21a8;
+        font-weight: bold;
+        border: none;
+        border-radius: 50px;
+        padding: 15px 30px;
+        cursor: pointer;
+        transition: 0.3s;
+        width: 150px;
+      }
+
+      .btn:hover {
+        background-color: #f3e8ff;
+        transform: scale(1.05);
+      }
+
+      footer {
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.15);
+        padding: 20px;
+        font-size: 0.9em;
+        border-radius: 20px 20px 0 0;
+        backdrop-filter: blur(10px);
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img
+        src="http://localhost/ecommerce_admin1/assets/img/logo.jpg"
+        alt="Logo Goguma Roll"
+      />
+      <h1>Selamat Datang di Goguma Roll 🍠</h1>
+    </header>
+
+    <section>
+      <div class="tentang">
+        <h2>Tentang Kami</h2>
+        <p>
+          <strong>Goguma Roll</strong> adalah dessert roll manis lembut khas
+          Korea dengan isian <strong>cheese, choco,</strong> dan
+          <strong>original ubi ungu</strong>. Dibuat dari bahan-bahan premium,
+          tanpa pengawet, dan tentunya dengan penuh cinta 💜.
+        </p>
+        <p>
+          Kami percaya bahwa setiap gigitan membawa kebahagiaan — karena itu,
+          Goguma Roll berkomitmen untuk menghadirkan rasa terbaik di setiap
+          potongan. Rasakan sensasi lembut, manis, dan gurih yang bikin jatuh
+          cinta sejak gigitan pertama! 🍰
+        </p>
+
+        <!-- Gambar Produk -->
+        <div class="produk-container">
+          <img
+            src="http://localhost/ecommerce_admin1/assets/img/original.jpg"
+            alt="Goguma Roll Original"
+          />
+          <img
+            src="http://localhost/ecommerce_admin1/assets/img/cheese.jpg"
+            alt="Goguma Roll Cheese"
+          />
+          <img
+            src="http://localhost/ecommerce_admin1/assets/img/choco.jpg"
+            alt="Goguma Roll Choco"
+          />
+        </div>
+      </div>
+
+      <div class="btn-container">
+        <div>
+          <button class="btn" onclick="window.location.href='registrasi.html'">
+            Registrasi
+          </button>
+          <p>Belum punya akun? Yuk daftar dulu 💫</p>
+        </div>
+        <div>
+          <button class="btn" onclick="window.location.href='login.html'">
+            Login
+          </button>
+          <p>Sudah punya akun? Yuk masuk 🍡</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        📞 Kontak: +62 814-1330-4002 (DINDA) | +62 898-9877-661 (FAHMI) | +62
+        895-2593-9963 (TEDY)
+      </p>
+      <p>📷 IG: @xiliaaws @mhyyy_23 @saputraseptiady</p>
+      <p>🕒 Open 09.00 - 21.00 | NOTE: SISTEM PRE-ORDER (PO) SELAMA 1-3 HARI</p>
+    </footer>
+  </body>
+</html>

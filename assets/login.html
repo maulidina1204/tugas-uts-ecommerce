@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Goguma Roll</title>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #a855f7, #9333ea, #7e22ce);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        text-align: center;
+      }
+
+      .container {
+        background: rgba(255, 255, 255, 0.15);
+        padding: 30px 40px;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+        width: 350px;
+      }
+
+      img {
+        width: 90px;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        margin-bottom: 15px;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        outline: none;
+      }
+
+      button {
+        background: white;
+        color: #7e22ce;
+        border: none;
+        padding: 12px;
+        border-radius: 25px;
+        font-weight: bold;
+        cursor: pointer;
+        width: 100%;
+        transition: 0.3s;
+      }
+
+      button:hover {
+        background: #f3e8ff;
+        transform: scale(1.05);
+      }
+
+      a {
+        color: #fff;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        src="http://localhost/ecommerce_admin1/assets/img/logo.jpg"
+        alt="Logo Goguma Roll"
+      />
+      <h2>Login Akun</h2>
+      <form onsubmit="return handleLogin(event)">
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+      </form>
+      <p>Belum punya akun? <a href="registrasi.html">Daftar di sini</a></p>
+    </div>
+
+    <script>
+      function handleLogin(event) {
+        event.preventDefault();
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        // simulasi login (karena belum ada backend)
+        if (email && password) {
+          alert(
+            "Login berhasil! Anda akan diarahkan ke halaman utama pembeli."
+          );
+          window.location.href = "dashboard.html"; // nanti diarahkan ke admin 2
+        } else {
+          alert("Email atau password salah!");
+        }
+      }
+    </script>
+  </body>
+</html>
