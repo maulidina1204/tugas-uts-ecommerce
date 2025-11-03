@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keranjang Belanja - Goguma Roll</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #7e22ce, #9333ea, #a855f7);
+        color: #fff;
+        min-height: 100vh;
+        padding: 30px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .cart-container {
+        max-width: 900px;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(6px);
+      }
+
+      .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 15px;
+      }
+
+      .cart-item img {
+        width: 90px;
+        height: 90px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      .item-info {
+        flex: 1;
+        margin-left: 15px;
+      }
+
+      .item-info h3 {
+        margin: 0 0 5px 0;
+        font-size: 1.2em;
+      }
+
+      .item-info p {
+        margin: 0;
+        font-size: 0.9em;
+        opacity: 0.9;
+      }
+
+      .qty-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .qty-controls button {
+        background: #fff;
+        color: #7e22ce;
+        border: none;
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .remove-btn {
+        background: #ff4d6d;
+        color: #fff;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .remove-btn:hover {
+        background: #e03150;
+      }
+
+      .total-section {
+        text-align: right;
+        margin-top: 20px;
+        font-size: 1.2em;
+        font-weight: 600;
+      }
+
+      .checkout-btn {
+        display: block;
+        width: 100%;
+        margin-top: 20px;
+        background: #fff;
+        color: #7e22ce;
+        border: none;
+        padding: 14px;
+        font-weight: bold;
+        font-size: 1em;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .checkout-btn:hover {
+        background: #f3e8ff;
+      }
+
+      .empty {
+        text-align: center;
+        font-size: 1.1em;
+        opacity: 0.9;
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>🛒 Keranjang Belanja Kamu</h1>
+
+    <div class="cart-container" id="cart-container"></div>
+
+    <script>
+      // Ambil data keranjang dari localStorage
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      const cartContainer = document.getElementById("cart-container");
+
+      function renderCart() {
+        cartContainer.innerHTML = "";
+
+        if (cart.length === 0) {
+          cartContainer.innerHTML =
+            '<p class="empty">Keranjang kamu masih kosong 💜<br><br><a href="index.html" style="color:#fff;text-decoration:underline;">Kembali ke Produk</a></p>';
+          return;
+        }
+
+        let total = 0;
+
+        cart.forEach((item, index) => {
+          const itemTotal = item.price * (item.qty || 1);
+          total += itemTotal;
+
+          const div = document.createElement("div");
+          div.classList.add("cart-item");
+          div.innerHTML = `
+            <img src="http://localhost/ecommerce_admin2/assets/img/${
+              item.name.toLowerCase().split(" ")[0]
+            }.jpg" alt="${item.name}">
+            <div class="item-info">
+              <h3>${item.name}</h3>
+              <p>Rp ${item.price.toLocaleString()}</p>
+            </div>
+            <div class="qty-controls">
+              <button onclick="changeQty(${index}, -1)">-</button>
+              <span>${item.qty || 1}</span>
+              <button onclick="changeQty(${index}, 1)">+</button>
+            </div>
+            <button class="remove-btn" onclick="removeItem(${index})">Hapus</button>
+          `;
+          cartContainer.appendChild(div);
+        });
+
+        const totalDiv = document.createElement("div");
+        totalDiv.classList.add("total-section");
+        totalDiv.innerHTML = `
+          Total: Rp ${total.toLocaleString()} 
+          <button class="checkout-btn" onclick="goToCheckout()">Lanjut ke Checkout</button>
+        `;
+        cartContainer.appendChild(totalDiv);
+      }
+
+      function changeQty(index, change) {
+        if (!cart[index].qty) cart[index].qty = 1;
+        cart[index].qty += change;
+        if (cart[index].qty < 1) cart[index].qty = 1;
+        localStorage.setItem("cart", JSON.stringify(cart));
+        renderCart();
+      }
+
+      function removeItem(index) {
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        renderCart();
+      }
+
+      function goToCheckout() {
+        window.location.href = "checkout.html";
+      }
+
+      renderCart();
+    </script>
+  </body>
+</html>

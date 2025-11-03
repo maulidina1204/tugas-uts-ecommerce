@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout - Goguma Roll</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #9333ea, #a855f7, #c084fc);
+        color: #fff;
+        min-height: 100vh;
+        padding: 30px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 25px;
+      }
+
+      .checkout-container {
+        max-width: 900px;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(6px);
+      }
+
+      .order-summary {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 25px;
+      }
+
+      .order-item {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 8px 0;
+      }
+
+      form label {
+        display: block;
+        margin-top: 10px;
+        font-weight: 600;
+      }
+
+      form input,
+      form textarea,
+      form select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .btn {
+        display: block;
+        width: 100%;
+        background: #fff;
+        color: #7e22ce;
+        border: none;
+        padding: 14px;
+        margin-top: 20px;
+        font-weight: bold;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .btn:hover {
+        background: #f3e8ff;
+      }
+
+      .back-link {
+        display: inline-block;
+        margin-bottom: 10px;
+        color: #fff;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <a href="cart.html" class="back-link">← Kembali ke Keranjang</a>
+    <h1>Checkout Pesanan Kamu 💜</h1>
+
+    <div class="checkout-container">
+      <div class="order-summary" id="order-summary"></div>
+
+      <form id="checkout-form">
+        <label>Nama Lengkap</label>
+        <input type="text" id="name" required />
+
+        <label>Nomor WhatsApp</label>
+        <input type="text" id="whatsapp" required />
+
+        <label>Alamat Lengkap</label>
+        <textarea id="address" rows="3" required></textarea>
+
+        <label>Catatan Pesanan</label>
+        <textarea
+          id="note"
+          rows="2"
+          placeholder="Contoh: Tanpa topping keju"
+        ></textarea>
+
+        <label>Metode Pembayaran</label>
+        <select id="payment-method" required>
+          <option value="">-- Pilih Metode --</option>
+          <option value="Transfer Bank">Transfer Bank</option>
+          <option value="QRIS">QRIS</option>
+          <option value="Tunai">Tunai</option>
+        </select>
+
+        <button type="submit" class="btn">Lanjut ke Pembayaran 💸</button>
+      </form>
+    </div>
+
+    <script>
+      const summaryDiv = document.getElementById("order-summary");
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      if (cart.length === 0) {
+        summaryDiv.innerHTML =
+          '<p>Keranjang kosong. <a href="index.html" style="color:#fff;text-decoration:underline;">Kembali ke beranda</a></p>';
+      } else {
+        let total = 0;
+        summaryDiv.innerHTML = "<h3>Ringkasan Pesanan</h3>";
+        cart.forEach((item) => {
+          const itemTotal = item.price * (item.qty || 1);
+          total += itemTotal;
+          summaryDiv.innerHTML += `
+            <div class="order-item">
+              <span>${item.name} x${item.qty || 1}</span>
+              <span>Rp ${itemTotal.toLocaleString()}</span>
+            </div>
+          `;
+        });
+        summaryDiv.innerHTML += `<div style="text-align:right;margin-top:10px;font-weight:600;">Total: Rp ${total.toLocaleString()}</div>`;
+      }
+
+      const form = document.getElementById("checkout-form");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const orderData = {
+          name: document.getElementById("name").value.trim(),
+          whatsapp: document.getElementById("whatsapp").value.trim(),
+          address: document.getElementById("address").value.trim(),
+          note: document.getElementById("note").value.trim(),
+          payment: document.getElementById("payment-method").value,
+          cart,
+        };
+
+        if (
+          !orderData.name ||
+          !orderData.whatsapp ||
+          !orderData.address ||
+          !orderData.payment
+        ) {
+          alert("Harap lengkapi semua data terlebih dahulu 💜");
+          return;
+        }
+
+        localStorage.setItem("orderData", JSON.stringify(orderData));
+        window.location.href = "payment.html";
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Status Pesanan - Goguma Roll</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #9333ea, #a855f7, #c084fc);
+        color: #fff;
+        padding: 30px;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 500px;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.15);
+        padding: 25px;
+        border-radius: 15px;
+        backdrop-filter: blur(6px);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 15px;
+      }
+
+      label {
+        font-weight: bold;
+        display: block;
+        margin-top: 10px;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .btn {
+        width: 100%;
+        background: #fff;
+        color: #7e22ce;
+        border: none;
+        padding: 12px;
+        margin-top: 20px;
+        font-weight: bold;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .btn:hover {
+        background: #f3e8ff;
+      }
+
+      .order-details {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .back {
+        margin-top: 15px;
+        display: block;
+        text-align: center;
+        color: #fff;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Status Pesanan Kamu 💜</h2>
+      <label>Nama Lengkap</label>
+      <input type="text" id="name" placeholder="Masukkan Nama Kamu" />
+
+      <label>Nomor WhatsApp</label>
+      <input type="text" id="whatsapp" placeholder="08xxxxxxxxxx" />
+
+      <button class="btn" onclick="checkStatus()">Cek Status Pesanan</button>
+
+      <div id="order-details" class="order-details" style="display: none"></div>
+
+      <a href="index.html" class="back">← Kembali ke Beranda</a>
+    </div>
+
+    <script>
+      function checkStatus() {
+        const name = document.getElementById("name").value.trim();
+        const whatsapp = document.getElementById("whatsapp").value.trim();
+        const orderData = JSON.parse(localStorage.getItem("orderData"));
+
+        if (!orderData) {
+          alert("Belum ada pesanan yang tersimpan.");
+          return;
+        }
+
+        if (orderData.name === name && orderData.whatsapp === whatsapp) {
+          const orderDetailsDiv = document.getElementById("order-details");
+          let itemsHTML = "";
+
+          orderData.cart.forEach((item) => {
+            itemsHTML += `<li>${item.name} x${item.qty || 1} - Rp ${(
+              item.price * (item.qty || 1)
+            ).toLocaleString()}</li>`;
+          });
+
+          orderDetailsDiv.style.display = "block";
+          orderDetailsDiv.innerHTML = `
+            <p><strong>Nama:</strong> ${orderData.name}</p>
+            <p><strong>No. WA:</strong> ${orderData.whatsapp}</p>
+            <p><strong>Alamat:</strong> ${orderData.address}</p>
+            <p><strong>Pesanan:</strong></p>
+            <ul>${itemsHTML}</ul>
+            <p><strong>Total:</strong> Rp ${orderData.cart
+              .reduce((acc, item) => acc + item.price * (item.qty || 1), 0)
+              .toLocaleString()}</p>
+            <p><strong>Metode Pembayaran:</strong> ${orderData.payment}</p>
+            <p><strong>Status:</strong> Sedang diproses ⏳</p>
+          `;
+        } else {
+          alert("Data tidak ditemukan. Pastikan nama & nomor WA sesuai ya 🥺");
+        }
+      }
+    </script>
+  </body>
+</html>

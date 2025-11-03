@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Goguma Roll Store</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #7e22ce, #9333ea, #a855f7);
+        color: #fff;
+        padding: 20px;
+        min-height: 100vh;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+      header h1 {
+        font-size: 2em;
+        font-weight: bold;
+      }
+
+      /* Cart Icon */
+      .cart-icon {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #fff;
+        color: #7e22ce;
+        width: 55px;
+        height: 55px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        font-size: 1.4em;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: 0.3s;
+        z-index: 20;
+      }
+
+      .cart-icon:hover {
+        background: #f3e8ff;
+        transform: scale(1.1);
+      }
+
+      .cart-count {
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        background: #9333ea;
+        color: #fff;
+        font-size: 0.8em;
+        font-weight: bold;
+        padding: 4px 8px;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18);
+      }
+
+      /* Status button under cart */
+      .status-btn {
+        position: fixed;
+        top: 90px; /* a bit below cart icon */
+        right: 22px;
+        background: rgba(255, 255, 255, 0.95);
+        color: #7e22ce;
+        padding: 10px 12px;
+        border-radius: 12px;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+        z-index: 19;
+        text-decoration: none;
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        transition: transform 0.14s ease;
+      }
+
+      .status-btn:hover {
+        transform: translateY(-4px);
+        background: #f3e8ff;
+      }
+
+      /* Product Grid */
+      .products {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+
+      .product-card {
+        background: rgba(255, 255, 255, 0.14);
+        backdrop-filter: blur(6px);
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        width: 250px;
+        transition: 0.3s;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(255, 255, 255, 0.12);
+      }
+
+      .product-card img {
+        width: 100%;
+        height: 170px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 15px;
+      }
+
+      .product-card h3 {
+        font-size: 1.3em;
+        margin-bottom: 8px;
+      }
+      .product-card p {
+        font-size: 0.95em;
+        margin-bottom: 10px;
+      }
+      .product-card button {
+        background: #fff;
+        color: #7e22ce;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        border-radius: 25px;
+        transition: 0.3s;
+      }
+
+      .product-card button:hover {
+        background: #f3e8ff;
+        transform: scale(1.05);
+      }
+
+      /* small footer note */
+      .note {
+        text-align: center;
+        margin-top: 32px;
+        opacity: 0.95;
+        font-size: 0.95rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Ikon Keranjang -->
+    <div class="cart-icon" onclick="window.location.href='cart.html'">
+      🛒
+      <span class="cart-count" id="cart-count">0</span>
+    </div>
+
+    <!-- Tombol Cek Status di bawah ikon keranjang -->
+    <a class="status-btn" href="status.html" title="Cek Status Pesanan">
+      🔍 Cek Status
+    </a>
+
+    <header>
+      <h1>Goguma Roll – Dessert Korea Viral! 🍠</h1>
+    </header>
+
+    <!-- Produk -->
+    <section class="products">
+      <div class="product-card">
+        <img
+          src="http://localhost/ecommerce_admin2/assets/img/original.jpg"
+          alt="Goguma Roll Original"
+        />
+        <h3>Original Roll</h3>
+        <p>Manis lembut khas ubi ungu, favorit semua orang 💜</p>
+        <p><strong>Rp 10.000</strong></p>
+        <button
+          onclick="addToCart('Original Roll', 10000, 'assets/img/original.jpg')"
+        >
+          Masukkan Keranjang
+        </button>
+      </div>
+
+      <div class="product-card">
+        <img
+          src="http://localhost/ecommerce_admin2/assets/img/choco.jpg"
+          alt="Goguma Roll Choco"
+        />
+        <h3>Choco Roll</h3>
+        <p>Lelehan cokelat premium di tiap gigitannya 🍫</p>
+        <p><strong>Rp 12.000</strong></p>
+        <button
+          onclick="addToCart('Choco Roll', 12000, 'assets/img/choco.jpg')"
+        >
+          Masukkan Keranjang
+        </button>
+      </div>
+
+      <div class="product-card">
+        <img
+          src="http://localhost/ecommerce_admin2/assets/img/cheese.jpg"
+          alt="Goguma Roll Cheese"
+        />
+        <h3>Cheese Roll</h3>
+        <p>Gurih kejunya bikin meleleh 😋</p>
+        <p><strong>Rp 13.000</strong></p>
+        <button
+          onclick="addToCart('Cheese Roll', 13000, 'assets/img/cheese.jpg')"
+        >
+          Masukkan Keranjang
+        </button>
+      </div>
+    </section>
+
+    <p class="note">
+      Tip: klik "Cek Status" untuk melacak pesanan kamu dengan Nama + No WA.
+    </p>
+
+    <script>
+      // Ambil data keranjang dari localStorage (kalau ada)
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      // Update jumlah item di ikon keranjang (sum qty)
+      function updateCartCount() {
+        const totalQty = cart.reduce((s, it) => s + (it.qty || 1), 0);
+        document.getElementById("cart-count").textContent = totalQty;
+      }
+
+      // Fungsi tambah produk ke keranjang
+      function addToCart(productName, price, image) {
+        // cek apakah sudah ada item dengan nama sama
+        const idx = cart.findIndex((i) => i.name === productName);
+        if (idx > -1) {
+          cart[idx].qty = (cart[idx].qty || 1) + 1;
+        } else {
+          cart.push({ name: productName, price: price, image: image, qty: 1 });
+        }
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartCount();
+        // notifikasi sederhana
+        const toast = document.createElement("div");
+        toast.textContent = `${productName} telah ditambahkan ke keranjang! 🛒`;
+        toast.style =
+          "position:fixed;right:20px;bottom:20px;background:#fff;color:#7e22ce;padding:10px 14px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.2);z-index:99;";
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 1800);
+      }
+
+      // Saat pertama kali halaman dibuka, update jumlah keranjang
+      updateCartCount();
+    </script>
+  </body>
+</html>
